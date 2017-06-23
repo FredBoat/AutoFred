@@ -66,5 +66,6 @@
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpasyncclient:4.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore-nio:4.4.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpmime:4.5.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.aerogear:aerogear-otp-java:1.0.0.M1" level="project" />
   </component>
 </module>

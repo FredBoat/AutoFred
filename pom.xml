@@ -18,7 +18,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.3.0_263</version>
+            <version>3.5.1_343</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

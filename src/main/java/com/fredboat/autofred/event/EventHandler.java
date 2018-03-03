@@ -36,11 +36,11 @@ public class EventHandler extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
-        String raw = event.getMessage().getRawContent();
+        String raw = event.getMessage().getContentRaw();
 
         if (event.getAuthor().getId().equals(event.getJDA().getSelfUser().getId())
-                || event.getMessage().getRawContent().startsWith(PREFIX)) {
-            log.info(event.getAuthor().getName() + "\t" + event.getMessage().getContent());
+                || event.getMessage().getContentRaw().startsWith(PREFIX)) {
+            log.info(event.getAuthor().getName() + "\t" + event.getMessage().getContentDisplay());
         }
 
         if (event.getAuthor().isBot()) return;
@@ -75,11 +75,11 @@ public class EventHandler extends ListenerAdapter {
     public void onPrivateMessageReceived(PrivateMessageReceivedEvent event) {
         if (event.getAuthor().isBot()) return;
 
-        log.info(event.getAuthor().getName() + "\t" + event.getMessage().getContent());
+        log.info(event.getAuthor().getName() + "\t" + event.getMessage().getContentDisplay());
 
         if (lastConfirm + CONFIRM_TIMEOUT > System.currentTimeMillis() && event.getAuthor().getId().equals(userAwaitingFor)) {
             // Verify the given token
-            if (new Totp(props.getTrusted().get(event.getAuthor().getId())).verify(event.getMessage().getRawContent())) {
+            if (new Totp(props.getTrusted().get(event.getAuthor().getId())).verify(event.getMessage().getContentRaw())) {
                 doReset(event);
             } else {
                 event.getAuthor().openPrivateChannel().queue(privateChannel ->
